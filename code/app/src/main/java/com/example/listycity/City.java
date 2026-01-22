@@ -1,6 +1,8 @@
 package com.example.listycity;
 
-public class City {
+import java.io.Serializable;
+
+public class City implements Serializable {
     String name;
     String province;
 

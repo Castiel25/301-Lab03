@@ -16,8 +16,19 @@ import org.jetbrains.annotations.Nullable;
 public class AddCityFragment extends DialogFragment {
     interface AddCityDialogListener {
         void addCity(City city);
+        void editCity(City oldCity, City newCity);
     }
     private AddCityDialogListener listener;
+    // Storing the City being edited
+    private City editingCity;
+
+    public static AddCityFragment newInstance(City city){
+        Bundle args = new Bundle();
+        args.putSerializable("city", city);
+        AddCityFragment fragment = new AddCityFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
