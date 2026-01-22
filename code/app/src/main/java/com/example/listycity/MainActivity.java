@@ -23,6 +23,10 @@ public class MainActivity extends AppCompatActivity implements AddCityFragment.A
         cityAdapter.notifyDataSetChanged();
     }
 
+    public void editCity(City oldCity, City newCity){
+        cityAdapter.notifyDataSetChanged();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +53,13 @@ public class MainActivity extends AppCompatActivity implements AddCityFragment.A
         FloatingActionButton fab = findViewById(R.id.button_add_city);
         fab.setOnClickListener(v -> {
             new AddCityFragment().show(getSupportFragmentManager(), "Add City");
+        });
+        // Same logic used in Lab 2 but instead of String, Using City
+        cityList.setOnItemClickListener((parent, view, position, id) -> {
+            City clicked = dataList.get(position);
+            /*Toast.makeText(this , "SELECTED: " + clicked.getName().toUpperCase(), Toast.LENGTH_SHORT).show();*/
+            AddCityFragment fragment = AddCityFragment.newInstance(clicked);
+            fragment.show(getSupportFragmentManager(), "Edit City");
         });
     }
 }
