@@ -13,15 +13,15 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 public class CityArrayAdapter extends ArrayAdapter<City> {
-    public CityArrayAdapter (Context context, ArrayList<City> cities){
-        super(context,0,cities);
+    public CityArrayAdapter(Context context, ArrayList<City> cities) {
+        super(context, 0, cities);
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View view = convertView;
-        if (view == null){
+        if (view == null) {
             view = LayoutInflater.from(getContext()).inflate(R.layout.content, parent, false);
         }
         City city = getItem(position);
@@ -29,7 +29,7 @@ public class CityArrayAdapter extends ArrayAdapter<City> {
         TextView cityName = view.findViewById(R.id.city_text);
         TextView provinceName = view.findViewById(R.id.province_text);
 
-        if (city != null){
+        if (city != null) {
             cityName.setText(city.getName());
             provinceName.setText(city.getProvince());
         }
@@ -37,3 +37,4 @@ public class CityArrayAdapter extends ArrayAdapter<City> {
         return view;
     }
 }
+
